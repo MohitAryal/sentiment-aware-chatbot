@@ -1,4 +1,4 @@
 langchain-groq
 langchain
-langchain-huggingface
 transformers
+python-dotenv
