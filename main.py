@@ -48,12 +48,15 @@ chain_with_history = RunnableWithMessageHistory(
     history_messages_key='conv_history'
 )
 
-# Loop until the user presses quit or exit
+# Get user's session by username
+session_id = input('Enter your name to continue previous conversations: ')
+
+# Run the chatbot until the user presses quit or exit
 while True:
-    # Take user's input
+    # Take user's query
     user_input = input('User: ')
     if user_input.lower() in ['quit', 'exit']:
         break
     # Call the model with past conversation_knowledge to get the required response
-    response = chain_with_history.invoke({'query': user_input}, {'configurable': {'session_id': 'abc'}})
+    response = chain_with_history.invoke({'query': user_input}, {'configurable': {'session_id': session_id}})
     print(f"Bot: {response.content}")
